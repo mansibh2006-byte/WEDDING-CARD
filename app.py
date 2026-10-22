@@ -23,8 +23,8 @@ def _cfg(key: str, default: str = "") -> str:
 MAPS_URL = _cfg("MAPS_URL", "")  # e.g. "https://maps.app.goo.gl/xxxxxxxx"
 SITE_URL = _cfg("SITE_URL", "")  # e.g. "https://keshav-anila.streamlit.app"
 
-GROOM_NAME = "Keshav Bhardwaj"
-BRIDE_NAME = "Anila Arora"
+GROOM_NAME = "Keshav"
+BRIDE_NAME = "Anila"
 
 # Put the parents' names here exactly as they should appear, e.g.
 #   "Son of Mr. ___ & Mrs. ___ Bhardwaj"
@@ -37,8 +37,8 @@ CONFIG = {
     "siteUrl": SITE_URL.strip(),
     "groom": GROOM_NAME,
     "bride": BRIDE_NAME,
-    "groomParents": GROOM_PARENTS.strip() or "Son of the Bhardwaj family",
-    "brideParents": BRIDE_PARENTS.strip() or "Daughter of the Arora family",
+    "groomParents": GROOM_PARENTS.strip() or "S/O Mrs.Sunita bhardwaj & Mr.Vijender Kumar Bhardwaj",
+    "brideParents": BRIDE_PARENTS.strip() or "D/O Mrs.Sonia & Mr.Deepak",
     # Countdown target: start of 5 Dec 2026, India Standard Time
     "target": "2026-12-05T00:00:00+05:30",
 }
@@ -407,7 +407,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
               <use href="#flower" x="6" y="108" width="30" height="30"/>
             </svg>
           </div>
-          <div class="body"><div class="time">8:00 PM</div><h3>Reception of Bazaar</h3><p>An evening of colour, music and togetherness.</p></div>
+          <div class="body"><div class="time">8:00 PM</div><h3>Reception of Baraat</h3><p>An evening of colour, music and togetherness.</p></div>
         </article>
       </div>
       <div class="ev reveal d1"><span class="node">&#10022;</span>
