@@ -20,7 +20,7 @@ def _cfg(key: str, default: str = "") -> str:
     return os.environ.get(key, default)
 
 
-MAPS_URL = ("https://maps.app.goo.gl/Sq2HDYSHddsj9Tb1A", "")  # e.g. "https://maps.app.goo.gl/xxxxxxxx"
+MAPS_URL = "https://maps.app.goo.gl/Sq2HDYSHddsj9Tb1A"  # e.g. "https://maps.app.goo.gl/xxxxxxxx"
 SITE_URL = _cfg("SITE_URL", "")  # e.g. "https://keshav-anila.streamlit.app"
 
 GROOM_NAME = "Keshav"
