@@ -209,7 +209,14 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
 .card .art{height:150px;display:grid;place-items:center;position:relative;overflow:hidden}
 .card .art svg{position:absolute;inset:0;width:100%;height:100%}
 .card .body{padding:1.1rem 1.3rem 1.4rem;text-align:center}
-.card .time{font-size:1.1rem;letter-spacing:.3em;text-transform:uppercase}
+..card .time {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
+    line-height: 1.6 !important;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+}
 .card h3{font-family:var(--display);font-weight:400;font-size:clamp(1.25rem,4.5vw,1.7rem);margin:.3rem 0;line-height:1.3}
 .card p{font-style:italic}
 .c-rec .art{background:linear-gradient(135deg,#7a1224,#a8284a)}
