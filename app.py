@@ -457,7 +457,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
       <p>Every wedding is built on the love of the people who surround it. Your presence in our celebration means more to both our families than any words can carry.</p>
       <p>You have been part of our stories, our homes and our festivals. We would be truly happy to have you with us as we begin this new chapter, to share a meal, a blessing and a few joyful hours.</p>
       <p>Come as you are, bring your warmth, and stay for the celebration.</p>
-      <p class="sig">The Bhardwaj &amp; Arora Families</p>
+      <p class="sig">The Bhardwaj Family</p>
     </div>
     <div class="diya-wrap reveal d3">
       <button class="diya" id="diya" type="button" aria-label="Light the diya for a blessing">
@@ -533,7 +533,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
     <div class="date-f reveal d1">05 &middot; 12 &middot; 2026</div>
     <div class="divider reveal"><svg><use href="#star4"/></svg></div>
     <p class="gift reveal d2">Your presence is our greatest gift.</p>
-    <p class="sign reveal d3">With love,<b>The Bhardwaj &amp; Arora Families</b></p>
+    <p class="sign reveal d3">With love,<b>The Bhardwaj Family</b></p>
     <div class="flower-row reveal d3" style="margin-top:1.6rem" aria-hidden="true"><svg><use href="#lotus"/></svg><svg><use href="#flower"/></svg><svg><use href="#lotus"/></svg></div>
   </div>
 </section>
