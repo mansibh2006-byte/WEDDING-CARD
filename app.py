@@ -130,21 +130,23 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
   background:radial-gradient(ellipse at 50% 30%,var(--maroon-l) 0%,var(--maroon) 45%,var(--maroon-d) 100%)}
 #welcome::before{content:"";position:absolute;inset:0;opacity:.12;
   background-image:radial-gradient(var(--gold) 1px,transparent 1.5px);background-size:26px 26px}
-..mono {
-  width: 180px;
-  height: 132px;
-  margin: 0 auto 1.2rem;
-  border-radius: 70px;
+.
+.mono {
+  width: 250px;
+  height: 190px;
+  margin: 0 auto 2rem;
+  border-radius: 95px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 20px;
   border: 2px solid var(--gold);
-  box-shadow: 0 0 0 6px rgba(201,162,75,.18),
-              0 0 40px rgba(232,205,135,.25);
+  box-shadow:
+    0 0 0 8px rgba(201,162,75,.18),
+    0 0 55px rgba(232,205,135,.35);
   font-family: var(--display);
-  font-size: 2.4rem;
+  font-size: 4.5rem;
   color: var(--gold-l);
   letter-spacing: .02em;
   background: radial-gradient(circle,rgba(0,0,0,.2),transparent);
@@ -152,11 +154,12 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
 
 .mono small {
   display: inline-block;
-  font-size: 1.7rem;
+  font-size: 3rem;
   margin: 0;
   color: var(--gold);
   line-height: 1;
 }
+
 #welcome .pre{letter-spacing:.35em;text-transform:uppercase;font-size:.85rem;color:var(--gold)}
 #welcome h1{font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,7vw,3.4rem);
   line-height:1.25;margin:.8rem 0;letter-spacing:.05em;color:var(--ivory)}
@@ -305,8 +308,21 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
 .flower-row{display:flex;justify-content:center;gap:1.2rem;color:var(--gold);margin:.6rem 0}
 .flower-row svg{width:34px;height:34px}
 
-@media(max-width:480px){body{font-size:17px}.corner{width:46px;height:46px}
-  nav a{font-size:.7rem;letter-spacing:.1em}.seal{width:150px;height:150px}.mono{width:112px;height:112px;font-size:1.7rem}}
+
+@media(max-width:480px) {
+  body { font-size: 17px; }
+  .corner { width: 46px; height: 46px; }
+  nav a { font-size: .7rem; letter-spacing: .1em; }
+  .seal { width: 150px; height: 150px; }
+  .mono {
+    width: 210px;
+    height: 155px;
+    font-size: 3.6rem;
+    gap: 15px;
+  }
+  .mono small { font-size: 2.5rem; }
+}
+
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
