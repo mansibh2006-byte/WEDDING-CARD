@@ -130,11 +130,33 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
   background:radial-gradient(ellipse at 50% 30%,var(--maroon-l) 0%,var(--maroon) 45%,var(--maroon-d) 100%)}
 #welcome::before{content:"";position:absolute;inset:0;opacity:.12;
   background-image:radial-gradient(var(--gold) 1px,transparent 1.5px);background-size:26px 26px}
-.mono{width:132px;height:132px;margin:0 auto 1.2rem;border-radius:50%;display:grid;place-items:center;
-  border:2px solid var(--gold);box-shadow:0 0 0 6px rgba(201,162,75,.18),0 0 40px rgba(232,205,135,.25);
-  font-family:var(--display);font-size:2rem;color:var(--gold-l);letter-spacing:.05em;
-  background:radial-gradient(circle,rgba(0,0,0,.2),transparent)}
-.mono small{font-size:1.1rem;margin:0 .15rem;color:var(--gold)}
+..mono {
+  width: 180px;
+  height: 132px;
+  margin: 0 auto 1.2rem;
+  border-radius: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 0 6px rgba(201,162,75,.18),
+              0 0 40px rgba(232,205,135,.25);
+  font-family: var(--display);
+  font-size: 2.4rem;
+  color: var(--gold-l);
+  letter-spacing: .02em;
+  background: radial-gradient(circle,rgba(0,0,0,.2),transparent);
+}
+
+.mono small {
+  display: inline-block;
+  font-size: 1.7rem;
+  margin: 0;
+  color: var(--gold);
+  line-height: 1;
+}
 #welcome .pre{letter-spacing:.35em;text-transform:uppercase;font-size:.85rem;color:var(--gold)}
 #welcome h1{font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,7vw,3.4rem);
   line-height:1.25;margin:.8rem 0;letter-spacing:.05em;color:var(--ivory)}
@@ -330,7 +352,9 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
   <svg class="corner tl"><use href="#corner"/></svg><svg class="corner tr"><use href="#corner"/></svg>
   <svg class="corner bl"><use href="#corner"/></svg><svg class="corner br"><use href="#corner"/></svg>
   <div class="wrap">
-    <div class="mono reveal" aria-label="K and A monogram">K<small>&times;</small>A</div>
+    <div class="mono reveal" aria-label="K and A monogram">
+  <span>K</span><small>∞</small><span>A</span>
+</div>
     <p class="pre reveal d1">Together with their families</p>
     <h1 class="reveal d2"><span id="gName"></span><span class="amp">&amp;</span><span id="bName"></span></h1>
     <p class="sub reveal d3">request the pleasure of your company</p>
@@ -372,7 +396,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
     <p class="eyebrow reveal">A date to remember</p>
     <h2 class="reveal d1">The Grand Date Reveal</h2>
     <button class="seal-btn reveal d2" id="sealBtn" type="button" aria-expanded="false" aria-controls="dateReveal">
-      <div class="seal"><b>K&nbsp;&times;&nbsp;A</b></div>
+      <div class="seal"><b>K&nbsp;∞&nbsp;A</b></div>
     </button>
     <p class="hint" id="sealHint">Tap the golden seal</p>
     <div id="dateReveal" aria-live="polite">
@@ -479,7 +503,9 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
   <div class="wrap">
     <p class="eyebrow reveal">Two names, one story</p>
     <h2 class="reveal d1">A Little Celebration of Love</h2>
-    <div class="mono reveal d2" style="margin-top:1.4rem;color:var(--maroon);border-color:var(--gold-d);background:none;box-shadow:0 0 0 6px rgba(201,162,75,.2)">K<small style="color:var(--gold-d)">&times;</small>A</div>
+    <div class="mono reveal d2" style="margin-top:1.4rem;color:var(--maroon);border-color:var(--gold-d);background:none;box-shadow:0 0 0 6px rgba(201,162,75,.2)">
+  <span>K</span><small style="color:var(--gold-d)">∞</small><span>A</span>
+</div>
     <svg class="floral reveal" viewBox="0 0 420 120" aria-hidden="true" style="color:var(--gold-d)">
       <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
         <path d="M10 70C70 30 120 100 210 62S350 30 410 70"/><path d="M10 82C70 46 120 112 210 76S350 46 410 82" opacity=".5"/>
