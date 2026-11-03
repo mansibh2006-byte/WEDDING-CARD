@@ -383,7 +383,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
 <!-- 2. FAMILIES -->
 <section id="families">
   <div class="wrap">
-    <p class="eyebrow reveal">With the blessings of our elders</p>
+    <p class="eyebrow reveal">With the blessings of Smt. Ramrati Devi W/O Late Sh. Om Dutt Sharma, we cordially invite you to the wedding celebration of their grandson</p>
     <h2 class="reveal d1">The Families</h2>
     <div class="divider reveal"><svg><use href="#lotus"/></svg></div>
     <div class="fam-grid">
