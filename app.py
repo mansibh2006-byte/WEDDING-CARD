@@ -269,6 +269,56 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
   box-shadow:inset 0 0 0 6px var(--ivory),inset 0 0 0 7px rgba(201,162,75,.6),0 8px 22px rgba(63,7,15,.12)}
 .letter p{margin-bottom:1rem}
 .letter .sig{font-family:var(--script);font-size:2rem;color:var(--maroon);margin:.6rem 0 0}
+/* Special invitation signature */
+.special-invite {
+  margin: 1.8rem auto 0;
+  text-align: center;
+  max-width: 600px;
+  padding: 0.5rem 1rem;
+}
+
+.special-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--gold);
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+}
+
+.special-divider::before,
+.special-divider::after {
+  content: "";
+  width: 65px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold),
+    transparent
+  );
+}
+
+.special-heading {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-d);
+  margin-bottom: 0.3rem;
+}
+
+.special-names {
+  font-family: var(--display);
+  font-size: clamp(1rem, 3.5vw, 1.3rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--maroon);
+  line-height: 1.6;
+  text-shadow: 0 1px 1px rgba(94, 11, 23, 0.08);
+}
 .diya-wrap{margin-top:1.6rem}
 .diya{background:none;border:0;display:inline-grid;justify-items:center;gap:.2rem;color:var(--maroon)}
 .diya svg{width:92px;height:92px;overflow:visible}
@@ -493,6 +543,19 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
       <p>You have been part of our stories, our homes and our festivals. We would be truly happy to have you with us as we begin this new chapter, to share a meal, a blessing and a few joyful hours.</p>
       <p>Come as you are, bring your warmth, and stay for the celebration.</p>
       <p class="sig">The Bhardwaj Family</p>
+    </div>
+    div class="special-invite reveal d3">
+
+      <div class="special-divider">
+
+        <span>✦</span>
+
+      </div>
+
+      <p class="special-heading">A Special Invitation From</p>
+
+      <p class="special-names">Mrs. Ritu &amp; Mr. Narender Bhardwaj</p>
+
     </div>
     <div class="diya-wrap reveal d3">
       <button class="diya" id="diya" type="button" aria-label="Light the diya for a blessing">
