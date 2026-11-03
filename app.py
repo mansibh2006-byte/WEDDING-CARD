@@ -113,6 +113,21 @@ section{position:relative;padding:clamp(4.5rem,11vw,8rem) 1.25rem;text-align:cen
   min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .wrap{width:100%;max-width:880px;margin:0 auto;position:relative;z-index:2}
 .eyebrow{font-size:.85rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold-d);margin-bottom:.8rem}
+
+/* Highlight the blessing line on the families page */
+#families > .wrap > .eyebrow {
+  color: #8b1725;
+  font-family: var(--serif);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 600;
+  letter-spacing: .04em;
+  line-height: 1.7;
+  text-transform: none;
+  max-width: 720px;
+  margin: 0 auto 1rem;
+  text-shadow: 0 1px 1px rgba(94, 11, 23, .08);
+}
+
 h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7rem);
   letter-spacing:.06em;line-height:1.25;color:var(--maroon)}
 .script{font-family:var(--script);font-weight:400}
