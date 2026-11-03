@@ -544,7 +544,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
       <p>Come as you are, bring your warmth, and stay for the celebration.</p>
       <p class="sig">The Bhardwaj Family</p>
     </div>
-    div class="special-invite reveal d3">
+    <div class="special-invite reveal d3">
 
       <div class="special-divider">
 
