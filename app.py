@@ -369,7 +369,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
 <path d="M100 86C101 112 99 134 89 148C80 160 64 160 62 148C61 140 70 138 73 144" stroke="url(#gGold)" stroke-width="1.6" opacity=".9"/>
 <g stroke="#e8cd87" stroke-width="1.4" opacity=".8"><path d="M91 100Q100 104 109 100"/><path d="M91 111Q100 115 108 111"/><path d="M91 122Q99 126 106 122"/><path d="M89 133Q96 137 103 133"/></g>
 </g></svg>
-    <p class="pre reveal d1">Together with their families</p>
+    <p class="pre reveal d1">!! श्री गणेशाय नमः !!</p>
     <h1 class="reveal d2"><span id="gName"></span><span class="amp">&amp;</span><span id="bName"></span></h1>
     <p class="sub reveal d3">request the pleasure of your company</p>
     <button class="btn light reveal d3" id="openBtn" type="button">Open the Invitation</button>
@@ -387,13 +387,11 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
     <div class="divider reveal"><svg><use href="#lotus"/></svg></div>
     <div class="fam-grid">
       <div class="fam reveal">
-        <p class="tag">The Groom</p>
         <h3 id="fGroom"></h3>
         <p class="rel" id="fGroomP"></p>
       </div>
       <div class="weds reveal d1">weds</div>
       <div class="fam reveal d2">
-        <p class="tag">The Bride</p>
         <h3 id="fBride"></h3>
         <p class="rel" id="fBrideP"></p>
       </div>
