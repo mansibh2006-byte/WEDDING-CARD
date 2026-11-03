@@ -38,8 +38,8 @@ CONFIG = {
     "siteUrl": SITE_URL.strip(),
     "groom": GROOM_NAME,
     "bride": BRIDE_NAME,
-    "groomParents": GROOM_PARENTS.strip() or "S/O Mrs.Sunita bhardwaj & Mr.Vijender Kumar Bhardwaj",
-    "brideParents": BRIDE_PARENTS.strip() or "D/O Mrs.Sonia & Mr.Deepak",
+    "groomParents": GROOM_PARENTS.strip() or "S/O Mrs.Sunita & Mr.Vijender Kumar Bhardwaj",
+    "brideParents": BRIDE_PARENTS.strip() or "D/O Mrs.Sonia & Mr.Deepak Arora",
     # Countdown target: start of 5 Dec 2026, India Standard Time
     "target": "2026-12-05T00:00:00+05:30",
 }
@@ -369,7 +369,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
 <path d="M100 86C101 112 99 134 89 148C80 160 64 160 62 148C61 140 70 138 73 144" stroke="url(#gGold)" stroke-width="1.6" opacity=".9"/>
 <g stroke="#e8cd87" stroke-width="1.4" opacity=".8"><path d="M91 100Q100 104 109 100"/><path d="M91 111Q100 115 108 111"/><path d="M91 122Q99 126 106 122"/><path d="M89 133Q96 137 103 133"/></g>
 </g></svg>
-    <p class="pre reveal d1">!! श्री गणेशाय नमः !!</p>
+    <p class="pre reveal d1">!!श्री गणेशाय नमः!!</p>
     <h1 class="reveal d2"><span id="gName"></span><span class="amp">&amp;</span><span id="bName"></span></h1>
     <p class="sub reveal d3">request the pleasure of your company</p>
     <button class="btn light reveal d3" id="openBtn" type="button">Open the Invitation</button>
