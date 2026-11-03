@@ -1,6 +1,7 @@
-
+import base64
 import json
 import os
+from pathlib import Path
 
 import streamlit as st
 import streamlit.components.v1 as components
@@ -42,6 +43,20 @@ CONFIG = {
     # Countdown target: start of 5 Dec 2026, India Standard Time
     "target": "2026-12-05T00:00:00+05:30",
 }
+
+# Personalised logo for the Date Reveal page: keep ka_logo.png next to app.py.
+# It is embedded into the page, so it works on any host with no extra URL.
+_LOGO_FILE = Path(__file__).with_name("ka_logo.png")
+if _LOGO_FILE.exists():
+    LOGO_IMG = (
+        '<img class="logo-img" alt="K and A wedding logo" src="data:image/png;base64,'
+        + base64.b64encode(_LOGO_FILE.read_bytes()).decode("ascii")
+        + '">'
+    )
+    LOGO_SEAL_CLASS = "seal has-logo"
+else:  # logo file missing: keep the original seal text so the page never breaks
+    LOGO_IMG = "<b>K&nbsp;\u221e&nbsp;A</b>"
+    LOGO_SEAL_CLASS = "seal"
 
 # --------------------------------------------------------------------------
 # PAGE HTML (CSS + HTML + JS in one self-contained document)
@@ -130,35 +145,8 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
   background:radial-gradient(ellipse at 50% 30%,var(--maroon-l) 0%,var(--maroon) 45%,var(--maroon-d) 100%)}
 #welcome::before{content:"";position:absolute;inset:0;opacity:.12;
   background-image:radial-gradient(var(--gold) 1px,transparent 1.5px);background-size:26px 26px}
-.
-.mono {
-  width: 250px;
-  height: 190px;
-  margin: 0 auto 2rem;
-  border-radius: 95px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  border: 2px solid var(--gold);
-  box-shadow:
-    0 0 0 8px rgba(201,162,75,.18),
-    0 0 55px rgba(232,205,135,.35);
-  font-family: var(--display);
-  font-size: 4.5rem;
-  color: var(--gold-l);
-  letter-spacing: .02em;
-  background: radial-gradient(circle,rgba(0,0,0,.2),transparent);
-}
-
-.mono small {
-  display: inline-block;
-  font-size: 3rem;
-  margin: 0;
-  color: var(--gold);
-  line-height: 1;
-}
+.emblem{width:190px;height:190px;margin:0 auto 2rem;display:block;
+  filter:drop-shadow(0 0 22px rgba(232,205,135,.35))}
 
 #welcome .pre{letter-spacing:.35em;text-transform:uppercase;font-size:.85rem;color:var(--gold)}
 #welcome h1{font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,7vw,3.4rem);
@@ -195,6 +183,9 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
   background:radial-gradient(circle at 35% 30%,var(--gold-l),var(--gold) 55%,var(--gold-d));
   box-shadow:0 0 0 8px rgba(201,162,75,.25),0 12px 30px rgba(0,0,0,.5);animation:pulse 2.6s infinite}
 .seal::before{content:"";position:absolute;inset:10px;border-radius:50%;border:2px dashed var(--maroon-d);opacity:.6}
+.seal.has-logo{width:220px;height:220px;background:#fbfaf8;overflow:hidden}
+.seal.has-logo::before{display:none}
+.seal .logo-img{position:relative;display:block;width:100%;height:100%;object-fit:contain;border-radius:50%}
 .seal b{font-family:var(--display);font-size:2rem;color:var(--maroon-d);font-weight:700}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 8px rgba(201,162,75,.25),0 12px 30px rgba(0,0,0,.5)}
   50%{box-shadow:0 0 0 18px rgba(201,162,75,.08),0 0 50px rgba(232,205,135,.55)}}
@@ -214,7 +205,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
 #countdown{background:var(--ivory);
   background-image:linear-gradient(rgba(251,243,228,.93),rgba(251,243,228,.93)),
   radial-gradient(var(--gold) 1px,transparent 1.5px);background-size:auto,22px 22px}
-.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.5rem,2.5vw,1.2rem);margin-top:2rem}
+.cd{display:grid;grid-template-columns:1fr;max-width:240px;margin:2rem auto 0}
 .cd div{background:linear-gradient(180deg,var(--maroon-l),var(--maroon-d));color:var(--gold-l);
   border:1.5px solid var(--gold);border-radius:14px;padding:1rem .2rem;
   box-shadow:0 6px 16px rgba(63,7,15,.3),inset 0 0 0 3px rgba(201,162,75,.15)}
@@ -272,17 +263,6 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
 .diya.lit svg{filter:drop-shadow(0 0 14px rgba(255,190,70,.9))}
 #blessing{min-height:2.4rem;font-family:var(--script);font-size:1.7rem;color:var(--gold-d);margin-top:.6rem}
 
-/* ---------- 7 love ---------- */
-#love{background:linear-gradient(180deg,var(--ivory),var(--ivory-d));overflow:hidden}
-.floral{width:min(420px,90%);margin:1rem auto;display:block}
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;max-width:560px;margin:1.6rem auto 0}
-.gallery .ph{aspect-ratio:3/4;border-radius:10px;border:1.5px solid var(--gold);
-  background:linear-gradient(160deg,var(--maroon-l),var(--maroon-d));display:grid;place-items:center;
-  color:var(--gold-l);overflow:hidden}
-.gallery .ph img{width:100%;height:100%;object-fit:cover}
-.gallery .ph svg{width:55%;opacity:.85}
-.note-small{font-size:.9rem;font-style:italic;color:var(--gold-d);margin-top:.9rem}
-
 /* ---------- 8 save the date ---------- */
 #save{background:linear-gradient(180deg,var(--maroon),var(--maroon-d));color:var(--gold-l)}
 #save h2{color:var(--gold-l)}
@@ -296,31 +276,14 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
 #locNote{margin-top:1rem;font-style:italic;color:var(--gold-d)}
 .btn.big{font-size:1.05rem;padding:1.05rem 2.4rem}
 
-/* ---------- 10 finale ---------- */
-#finale{min-height:100vh;color:var(--gold-l);overflow:hidden;
-  background:radial-gradient(ellipse at 50% 20%,var(--night-2),var(--night) 55%,#04071c)}
-#stars{position:absolute;inset:0;z-index:1}
-#stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--gold-l);animation:tw 3s ease-in-out infinite}
-#finale .date-f{font-family:var(--display);font-size:clamp(1.6rem,7vw,3rem);letter-spacing:.12em;color:var(--gold-l);margin:1rem 0;text-shadow:0 0 22px rgba(232,205,135,.5)}
-#finale .gift{font-family:var(--script);font-size:clamp(2rem,8vw,3.6rem);color:var(--ivory);margin:1.2rem 0;line-height:1.2}
-#finale .sign{font-style:italic;font-size:1.15rem;color:var(--gold-l)}
-#finale .sign b{display:block;font-family:var(--display);font-weight:400;font-size:1rem;letter-spacing:.14em;margin-top:.4rem;color:var(--gold)}
-.flower-row{display:flex;justify-content:center;gap:1.2rem;color:var(--gold);margin:.6rem 0}
-.flower-row svg{width:34px;height:34px}
-
 
 @media(max-width:480px) {
   body { font-size: 17px; }
   .corner { width: 46px; height: 46px; }
   nav a { font-size: .7rem; letter-spacing: .1em; }
   .seal { width: 150px; height: 150px; }
-  .mono {
-    width: 210px;
-    height: 155px;
-    font-size: 3.6rem;
-    gap: 15px;
-  }
-  .mono small { font-size: 2.5rem; }
+  .emblem { width: 150px; height: 150px; }
+  .seal.has-logo { width: 190px; height: 190px; }
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -368,9 +331,44 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
   <svg class="corner tl"><use href="#corner"/></svg><svg class="corner tr"><use href="#corner"/></svg>
   <svg class="corner bl"><use href="#corner"/></svg><svg class="corner br"><use href="#corner"/></svg>
   <div class="wrap">
-    <div class="mono reveal" aria-label="K and A monogram">
-  <span>K</span><small>∞</small><span>A</span>
-</div>
+    <svg class="emblem reveal" viewBox="0 0 200 200" role="img" aria-label="Lord Ganesha emblem"><defs>
+<linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8cd87"/><stop offset=".55" stop-color="#c9a24b"/><stop offset="1" stop-color="#9c7a2c"/></linearGradient>
+</defs>
+
+<g fill="none" stroke="url(#gGold)" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="100" cy="100" r="95" stroke-width="2"/>
+<circle cx="100" cy="100" r="89" stroke-width="1" stroke-dasharray="1 4"/>
+<!-- ears -->
+<path d="M67 66C28 44 8 92 30 128C42 146 62 132 67 110Z" fill="#7a1224" stroke-width="2.2"/>
+<path d="M133 66C172 44 192 92 170 128C158 146 138 132 133 110Z" fill="#7a1224" stroke-width="2.2"/>
+<path d="M60 76C38 66 26 94 40 118" stroke-width="1.3" opacity=".8"/>
+<path d="M140 76C162 66 174 94 160 118" stroke-width="1.3" opacity=".8"/>
+<!-- head -->
+<path d="M63 70C63 52 80 46 100 46S137 52 137 70C137 96 122 116 100 116S63 96 63 70Z" fill="#6a0f1d" stroke-width="2.4"/>
+<!-- crown -->
+<path d="M66 62L70 38L86 50L100 22L114 50L130 38L134 62C120 56 80 56 66 62Z" fill="url(#gGold)" stroke="#9c7a2c" stroke-width="1.4"/>
+<circle cx="100" cy="44" r="4.2" fill="#8c1a2c" stroke="#3f070f" stroke-width="1"/>
+<path d="M74 60C90 55 110 55 126 60" stroke="#3f070f" stroke-width="1.2" opacity=".6"/>
+<!-- tilak -->
+<path d="M100 63V77" stroke="#e8cd87" stroke-width="3.2"/>
+<path d="M92 66Q100 60 108 66" stroke-width="1.6"/>
+<!-- eyes -->
+<path d="M77 82Q85 75 93 82Q85 87 77 82Z" fill="#e8cd87" stroke-width="1.4"/>
+<path d="M107 82Q115 75 123 82Q115 87 107 82Z" fill="#e8cd87" stroke-width="1.4"/>
+<circle cx="85" cy="81.5" r="2.2" fill="#3f070f" stroke="none"/><circle cx="115" cy="81.5" r="2.2" fill="#3f070f" stroke="none"/>
+<path d="M75 74Q85 68 95 73M105 73Q115 68 125 74" stroke-width="1.6"/>
+<!-- necklace -->
+<path d="M58 124Q100 168 142 124" stroke-dasharray="0.1 5" stroke-width="3.2"/>
+<path d="M72 130Q100 150 128 130" stroke-width="1.2" opacity=".8"/>
+<!-- tusks -->
+<path d="M110 104C126 106 134 122 124 138" stroke="#e8cd87" stroke-width="5.5"/>
+<path d="M90 106C83 108 80 114 81 120" stroke="#e8cd87" stroke-width="4.5"/>
+<!-- trunk -->
+<path d="M100 84C101 112 99 134 89 148" stroke="#8c1a2c" stroke-width="21"/>
+<path d="M89 148C80 160 64 160 62 148C61 140 70 138 73 144" stroke="#8c1a2c" stroke-width="14"/>
+<path d="M100 86C101 112 99 134 89 148C80 160 64 160 62 148C61 140 70 138 73 144" stroke="url(#gGold)" stroke-width="1.6" opacity=".9"/>
+<g stroke="#e8cd87" stroke-width="1.4" opacity=".8"><path d="M91 100Q100 104 109 100"/><path d="M91 111Q100 115 108 111"/><path d="M91 122Q99 126 106 122"/><path d="M89 133Q96 137 103 133"/></g>
+</g></svg>
     <p class="pre reveal d1">Together with their families</p>
     <h1 class="reveal d2"><span id="gName"></span><span class="amp">&amp;</span><span id="bName"></span></h1>
     <p class="sub reveal d3">request the pleasure of your company</p>
@@ -412,7 +410,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
     <p class="eyebrow reveal">A date to remember</p>
     <h2 class="reveal d1">The Grand Date Reveal</h2>
     <button class="seal-btn reveal d2" id="sealBtn" type="button" aria-expanded="false" aria-controls="dateReveal">
-      <div class="seal"><b>K&nbsp;∞&nbsp;A</b></div>
+      <div class="__SEAL_CLASS__">__LOGO_IMG__</div>
     </button>
     <p class="hint" id="sealHint">Tap the golden seal</p>
     <div id="dateReveal" aria-live="polite">
@@ -420,21 +418,6 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
       <div class="big" id="bigDate">05 DECEMBER 2026</div>
       <div class="divider"><svg><use href="#star4"/></svg></div>
     </div>
-  </div>
-</section>
-
-<!-- 4. COUNTDOWN -->
-<section id="countdown">
-  <div class="wrap">
-    <p class="eyebrow reveal">Every moment brings us closer</p>
-    <h2 class="reveal d1">Our Wedding Countdown</h2>
-    <div class="cd reveal d2" role="timer" aria-label="Countdown to 5 December 2026">
-      <div><b id="cdD">00</b><span>Days</span></div>
-      <div><b id="cdH">00</b><span>Hours</span></div>
-      <div><b id="cdM">00</b><span>Minutes</span></div>
-      <div><b id="cdS">00</b><span>Seconds</span></div>
-    </div>
-    <p id="cdNote" class="reveal d3">Counting down to 5 December 2026 (IST)</p>
   </div>
 </section>
 
@@ -514,28 +497,16 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
   </div>
 </section>
 
-<!-- 7. LOVE -->
-<section id="love">
+<!-- 9. LOCATION -->
+<section id="location">
+  <div class="border-orn"></div>
   <div class="wrap">
-    <p class="eyebrow reveal">Two names, one story</p>
-    <h2 class="reveal d1">A Little Celebration of Love</h2>
-    <div class="mono reveal d2" style="margin-top:1.4rem;color:var(--maroon);border-color:var(--gold-d);background:none;box-shadow:0 0 0 6px rgba(201,162,75,.2)">
-  <span>K</span><small style="color:var(--gold-d)">∞</small><span>A</span>
-</div>
-    <svg class="floral reveal" viewBox="0 0 420 120" aria-hidden="true" style="color:var(--gold-d)">
-      <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-        <path d="M10 70C70 30 120 100 210 62S350 30 410 70"/><path d="M10 82C70 46 120 112 210 76S350 46 410 82" opacity=".5"/>
-      </g>
-      <use href="#flower" x="30" y="30" width="38" height="38" style="color:var(--maroon)"/>
-      <use href="#lotus" x="110" y="52" width="34" height="34"/>
-      <use href="#flower" x="190" y="26" width="44" height="44" style="color:var(--maroon)"/>
-      <use href="#lotus" x="276" y="52" width="34" height="34"/>
-      <use href="#flower" x="352" y="30" width="38" height="38" style="color:var(--maroon)"/>
-    </svg>
-    <p class="reveal" style="max-width:520px;margin:0 auto;font-style:italic">Some moments are best shared with the people we love. Thank you for being part of ours.</p>
-    <!-- Optional photo gallery: add image URLs to PHOTOS in app.py. Ornamental artwork shows otherwise. -->
-    <div class="gallery reveal" id="gallery"></div>
-    <p class="note-small reveal" id="galleryNote"></p>
+    <p class="eyebrow reveal">We await you</p>
+    <h2 class="reveal d1">Find the Wedding Location</h2>
+    <div class="divider reveal"><svg><use href="#lotus"/></svg></div>
+    <p class="final-inv reveal d2">We would be honoured by your presence</p>
+    <div class="reveal d3"><a class="btn big" id="mapBtn" href="#" target="_blank" rel="noopener noreferrer">Open Location in Google Maps</a></div>
+    <p id="locNote"></p>
   </div>
 </section>
 
@@ -553,30 +524,15 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
   </div>
 </section>
 
-<!-- 9. LOCATION -->
-<section id="location">
-  <div class="border-orn"></div>
+<!-- 4. COUNTDOWN -->
+<section id="countdown">
   <div class="wrap">
-    <p class="eyebrow reveal">We await you</p>
-    <h2 class="reveal d1">Find the Wedding Location</h2>
-    <div class="divider reveal"><svg><use href="#lotus"/></svg></div>
-    <p class="final-inv reveal d2">We would be honoured by your presence</p>
-    <div class="reveal d3"><a class="btn big" id="mapBtn" href="#" target="_blank" rel="noopener noreferrer">Open Location in Google Maps</a></div>
-    <p id="locNote"></p>
-  </div>
-</section>
-
-<!-- 10. FINALE -->
-<section id="finale">
-  <div id="stars" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="flower-row reveal" aria-hidden="true"><svg><use href="#flower"/></svg><svg><use href="#lotus"/></svg><svg><use href="#flower"/></svg></div>
-    <p class="eyebrow reveal" style="color:var(--gold)">The Grand Finale</p>
-    <div class="date-f reveal d1">05 &middot; 12 &middot; 2026</div>
-    <div class="divider reveal"><svg><use href="#star4"/></svg></div>
-    <p class="gift reveal d2">Your presence is our greatest gift.</p>
-    <p class="sign reveal d3">With love,<b>The Bhardwaj Family</b></p>
-    <div class="flower-row reveal d3" style="margin-top:1.6rem" aria-hidden="true"><svg><use href="#lotus"/></svg><svg><use href="#flower"/></svg><svg><use href="#lotus"/></svg></div>
+    <p class="eyebrow reveal">Every moment brings us closer</p>
+    <h2 class="reveal d1">Our Wedding Countdown</h2>
+    <div class="cd reveal d2" role="timer" aria-label="Countdown to 5 December 2026">
+      <div><b id="cdD">00</b><span>Days</span></div>
+    </div>
+    <p id="cdNote" class="reveal d3">Counting down to 5 December 2026 (IST)</p>
   </div>
 </section>
 
@@ -584,7 +540,6 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
 (function(){
   "use strict";
   var CFG = __CONFIG__;
-  var PHOTOS = [];   // optional: list of image URLs, e.g. ["https://.../1.jpg"]
   var $ = function(id){return document.getElementById(id)};
   var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -688,10 +643,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
     var diff = Math.max(0, target - Date.now());
     var s = Math.floor(diff/1000);
     var d = Math.floor(s/86400); s -= d*86400;
-    var h = Math.floor(s/3600);  s -= h*3600;
-    var m = Math.floor(s/60);    s -= m*60;
-    $("cdD").textContent = d<100?pad(d):d; $("cdH").textContent=pad(h);
-    $("cdM").textContent=pad(m); $("cdS").textContent=pad(s);
+    $("cdD").textContent = d<100?pad(d):d;
     if(target - Date.now() <= 0){
       var end = target + 86400000;
       $("cdNote").textContent = Date.now() < end ? "Today is the day. Join us in celebration!" : "Thank you for celebrating with us.";
@@ -720,18 +672,6 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
     $("blessing").textContent = wishes[wi++ % wishes.length];
     burst($("message"), diya, 12);
   });
-
-  /* 7. gallery: real photos only if supplied, else ornamental artwork */
-  (function(){
-    var g=$("gallery"), icons=["#lotus","#flower","#lotus"];
-    for(var i=0;i<3;i++){
-      var d=document.createElement("div"); d.className="ph";
-      if(PHOTOS[i]){ var im=new Image(); im.alt="Photograph"; im.loading="lazy"; im.src=PHOTOS[i]; d.appendChild(im); }
-      else d.innerHTML='<svg viewBox="0 0 40 40" style="color:#e8cd87" aria-hidden="true"><use href="'+icons[i]+'"/></svg>';
-      g.appendChild(d);
-    }
-    $("galleryNote").textContent = PHOTOS.length ? "" : "Photographs coming soon.";
-  })();
 
   /* 8. calendar download (all-day event: no invented time, venue or duration) */
   function esc(t){return t.replace(/\\/g,"\\\\").replace(/;/g,"\\;").replace(/,/g,"\\,").replace(/\n/g,"\\n")}
@@ -787,16 +727,6 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,5.5vw,2.7re
     }
   })();
 
-  /* 10. finale stars */
-  (function(){
-    var box=$("stars"), seed=3; function rnd(){ seed=(seed*9301+49297)%233280; return seed/233280; }
-    for(var i=0;i<60;i++){
-      var s=document.createElement("i");
-      s.style.left=(rnd()*100)+"%"; s.style.top=(rnd()*100)+"%";
-      s.style.animationDelay=(rnd()*3)+"s"; var z=1+rnd()*3; s.style.width=s.style.height=z+"px";
-      box.appendChild(s);
-    }
-  })();
 })();
 </script>
 </body>
@@ -829,7 +759,11 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-page = HTML.replace("__CONFIG__", json.dumps(CONFIG))
+page = (
+    HTML.replace("__CONFIG__", json.dumps(CONFIG))
+    .replace("__SEAL_CLASS__", LOGO_SEAL_CLASS)
+    .replace("__LOGO_IMG__", LOGO_IMG)
+)
 
 # The page expands its own iframe to the full browser viewport (see script),
 # so the guest scrolls one continuous website, with no tiny inner scrollbar.
