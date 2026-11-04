@@ -39,7 +39,7 @@ CONFIG = {
     "groom": GROOM_NAME,
     "bride": BRIDE_NAME,
     "groomParents": GROOM_PARENTS.strip() or "S/O Mrs.Sunita & Mr.Vijender Kumar Bhardwaj",
-    "brideParents": BRIDE_PARENTS.strip() or "D/O Mrs.Sonia & Mr.Deepak Arora",
+    "brideParents": BRIDE_PARENTS.strip() or "D/O Mrs.Sonia & Mr.Deepak Arora(kashyap)",
     # Countdown target: start of 5 Dec 2026, India Standard Time
     "target": "2026-12-05T00:00:00+05:30",
 }
